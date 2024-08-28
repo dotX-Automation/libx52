@@ -9,6 +9,7 @@
 #include "config.h"
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 #include "io_common.h"
 #include "usb-ids.h"
 #include "gettext.h"
@@ -86,6 +87,7 @@ int libx52io_open(libx52io_context *ctx)
         case X52_PROD_X52_1:
         case X52_PROD_X52_2:
         case X52_PROD_X52PRO:
+            fprintf(stdout, "libx52io_open: opening device file path: %s\n", cur_dev->path);
             ctx->handle = hid_open_path(cur_dev->path);
             if (ctx->handle == NULL) {
                 rc = LIBX52IO_ERROR_CONN;
